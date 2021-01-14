@@ -1,0 +1,6 @@
+[submodule "kubespray"]
+	path = kubespray
+	url = git@github.com/kubernetes-sigs/kubespray.git
+[submodule "forgeops"]
+	path = forgeops
+	url = git@github.com/ForgeRock/forgeops.git
