@@ -71,7 +71,7 @@ $local_path_provisioner_enabled ||= false
 $local_path_provisioner_claim_root ||= "/opt/local-path-provisioner/"
 $libvirt_nested ||= false
 
-$playbook ||= "cluster.yml"
+$playbook ||= "kubespray/cluster.yml"
 
 host_vars = {}
 
