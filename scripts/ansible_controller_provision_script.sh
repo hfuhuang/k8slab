@@ -38,4 +38,18 @@ sudo install skaffold /usr/local/bin/
 curl -s "https://raw.githubusercontent.com/\
 kubernetes-sigs/kustomize/master/hack/install_kustomize.sh"  | bash
 
+# install haproxy on the ansible controller as LB
+sudo dnf install -y haproxy
+sudo mv /etc/haproxy/haproxy.conf /etc/haproxy/haproxy.conf.orig
+sudo cp /vagrant/scripts/haproxy.conf /etc/haproxy/haproxy.conf
+# setup rsyslog for haproxy
+# sudo sed -i "s/#module\(load=\"imudp\"\)/module\(load=\"imudp\"\)/g" /etc/rsyslog.conf
+# sudo sed -i "s/#input\(type=\"imudp\" port=\"514\"\)/input(type=\"imudp\" port=\"514\"\)/g" /etc/rsyslog.conf
+# sudo cp /vagrant/scripts/rsyslog-haproxy.conf /etc/rsyslog.d/
+# sudo systemctl restart rsyslog
+# sudo systemctl enable rsyslog
+sudo setsebool -P haproxy_connect_any 1
+sudo systemctl start haproxy
+sudo systemctl enable haproxy
+
 
